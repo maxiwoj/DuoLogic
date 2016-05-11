@@ -25,18 +25,15 @@ void fireworks(){
     nodelay(stdscr, TRUE);
     noecho();
 
-    if (has_colors())
-        start_color();
+    if (has_colors()) start_color();
 
-    for (i = 0; i < 8; i++)
-        init_pair(i, color_table[i], COLOR_BLACK);
+    for (i = 0; i < 8; i++) init_pair(i, color_table[i], COLOR_BLACK);
 
     seed = time((time_t *)0);
     srand(seed);
     flag = 0;
 
-    while (getch() == ERR)      /* loop until a key is hit */
-    {
+    while (getch() == ERR){ 		// loop until a key is hit
         do {
             start = rand() % (COLS - 3);
             end = rand() % (COLS - 3);
@@ -49,21 +46,18 @@ void fireworks(){
 
         attrset(A_NORMAL);
 
-        for (row = 0; row < diff; row++)
-        {
+        for (row = 0; row < diff; row++){
             mvaddstr(LINES - row, row * direction + start,
                 (direction < 0) ? "\\" : "/");
 
-            if (flag++)
-            {
+            if (flag++){
                 myrefresh();
                 erase();
                 flag = 0;
             }
         }
 
-        if (flag++)
-        {
+        if (flag++){
             myrefresh();
             flag = 0;
         }
@@ -77,8 +71,7 @@ void fireworks(){
     return;
 }
 
-void explode(int row, int col)
-{
+void explode(int row, int col){
     erase();
     mvaddstr(row, col, "-");
     myrefresh();
@@ -126,15 +119,13 @@ void explode(int row, int col)
     myrefresh();
 }
 
-void myrefresh(void)
-{
+void myrefresh(void){
     napms(DELAYSIZE);
     move(LINES - 1, COLS - 1);
     refresh();
 }
 
-void get_color(void)
-{
+void get_color(void){
     chtype bold = (rand() % 2) ? A_BOLD : A_NORMAL;
     attrset(COLOR_PAIR(rand() % 8) | bold);
 }

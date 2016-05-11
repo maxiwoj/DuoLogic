@@ -119,8 +119,7 @@ void printVLine(int fields[4][5]){					//print lines vartically with colors
         attroff(COLOR_PAIR(1));
         mvprintw(17,38,"%c",line[3]);
     }
-    else
-    {
+    else{
         mvprintw(0,0, "Twoja Konsolka nie obsluguje kolorow. :/ " );
     }
 

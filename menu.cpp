@@ -23,24 +23,15 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
     int user_action;
     const short int min_choice = 1;
     const short int max_choice = 3;
-    do
-    {
+    do{
         //get user_action
         user_action = getch();
         clear();
 	//react to user_action
-        if( user_action == 259 && which != min_choice )
-        {
-            which--;
-        }
-        else if( user_action == 258 && which != max_choice )
-        {
-            which++;
-        }
-        if( user_action == 10 )
-        {
-            switch( which )
-            {
+        if( user_action == 259 && which != min_choice ) which--;
+        else if( user_action == 258 && which != max_choice ) which++;
+        if( user_action == 10 ){
+            switch( which ){
             case 1:
                 clear();
                 mvprintw(1,(cols/2)-3,"Gramy!");
@@ -50,26 +41,21 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
                 printw("Esc - powrot do menu");
                 move(rows-1,0);
                 user_action=getch();
-                if(user_action!=27){
-                    play(alternative,conjuction,negation);
-                }
+                if(user_action!=27) play(alternative,conjuction,negation);
                 clear();
                 break;
             case 2:
                 clear();
                 printLogo(0);
                 printInstruction();
-                while(user_action != 27){
-                    user_action=getch();
-                }
+                while(user_action != 27) user_action=getch();
                 clear();
                 break;
             }
 
         }
         //display menu after user_action
-        switch( which )				//if the arrow up/down has been hit - the highlightened field changed, so print menu again, but change the field that is highlightened
-        {
+        switch( which ){			//if the arrow up/down has been hit - the highlightened field changed, so print menu again, but change the field that is highlightened
         case 1:
             mvprintw( 6, 5, field2 );
             mvprintw( 7, 5, field3 );

@@ -179,12 +179,8 @@ void notice_move(int x,int y, int user_action,bool operandsHorizontal[4][4],bool
 }
 //---------------------------------------------------------------
 void notice_negation_change(int x,int y,bool notsHorizontal[4],bool notsVertical[5]){
-    if(y==10){
-        notsVertical[(x-18)/5]=true;            //possible values of x: 18,23,28,33,38 - for corresponding fields of notsVertical
-    }
-    else{
-        notsHorizontal[(y-11)/2]=true;           //possible values of y: 11,13,15,17 - for corresponding fields of notsHorizontal
-    }
+    if(y==10) notsVertical[(x-18)/5]=true;            //possible values of x: 18,23,28,33,38 - for corresponding fields of notsVertical
+    else notsHorizontal[(y-11)/2]=true;           //possible values of y: 11,13,15,17 - for corresponding fields of notsHorizontal
 }
 //---------------------------------------------------------------
 bool significantField(int x,int y){
