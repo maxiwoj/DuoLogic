@@ -5,7 +5,7 @@ The instruction below is prepared for Unix platform:
 Copilation and usage:
 The game uses external library (curses) so if you have the library installed on your computer you can skip the first step.
 
-	1. Instaliing the library: type "make config" in the directory you git cloned the game to download and install the library on your computer. You will be asked for the password of the root user (installing external libraries requires the administrator's permission).
+1. Instaliing the library: type "make config" in the directory you git cloned the game to download and install the library on your computer. You will be asked for the password of the root user (installing external libraries requires the administrator's permission).
 
 COMPILATION: to compile simply type "make"
 RUN: to compile and run type "make run"
