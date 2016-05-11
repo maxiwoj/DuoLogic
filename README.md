@@ -8,8 +8,11 @@ The game uses external library (curses) so if you have the library installed on 
 1. Instaliing the library: type "make config" in the directory you git cloned the game to download and install the library on your computer. You will be asked for the password of the root user (installing external libraries requires the administrator's permission).
 
 COMPILATION: to compile simply type "make"
+
 RUN: to compile and run type "make run"
+
 CLEAN: to clean execuable,backup and object files from the directory type make clean
+
 
 NOTE: Before every commit to the git remember to clean the directory with command "make clean"
 
