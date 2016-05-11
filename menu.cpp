@@ -15,7 +15,7 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
 
     noecho();
     keypad( stdscr, TRUE );
-    //rozpoczynamy wyswietlanie menu!
+    //start displaing menu
     const char field1[] = "Graj!";
     const char field2[] = "Instrukcja";
     const char field3[] = "Wyjscie";
@@ -25,9 +25,10 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
     const short int max_choice = 3;
     do
     {
-        //pobieranie user_action
+        //get user_action
         user_action = getch();
         clear();
+	//react to user_action
         if( user_action == 259 && which != min_choice )
         {
             which--;
@@ -36,7 +37,6 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
         {
             which++;
         }
-        //reakcja
         if( user_action == 10 )
         {
             switch( which )
@@ -67,8 +67,8 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
             }
 
         }
-        //wyswietlanie
-        switch( which )
+        //display menu after user_action
+        switch( which )				//if the arrow up/down has been hit - the highlightened field changed, so print menu again, but change the field that is highlightened
         {
         case 1:
             mvprintw( 6, 5, field2 );
@@ -94,7 +94,7 @@ void menu(int alternative[3][3],int conjuction[3][3],int negation[3]){
         attroff( A_REVERSE );
         mvprintw(rows-1,0,"Game created and produced by Maksymilian Wojczuk");
         printLogo_slanted(5,cols-90);
-    } while( which != 3 || user_action != 10 );
+    } while( which != 3 || user_action != 10 );			//to end the loop you need to hit enter on "exit"
 }
 //---------------------------------------------------------
 void printLogo(int y){

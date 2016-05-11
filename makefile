@@ -16,9 +16,6 @@ config:
 	$(LIBRARY)
 
 clean:
-	\rm *~ $(NAME) -f
-
-cleanAll:
 	\rm -if *~ *.o $(NAME)
 run: game 
 	./$(NAME) --or $(OR) --not $(NOT) --and $(AND)

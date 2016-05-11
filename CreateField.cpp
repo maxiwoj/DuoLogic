@@ -6,7 +6,7 @@ void printBrain();
 
 void createBoard(int fields[4][5]){
     move(10,15);
-    printw("   _    _    _    _    _  ");
+    printw("   _    _    _    _    _  ");			//always the same fields in the game
     mvprintw(11,15,"_ (      )_((      ) _  ))");
     mvprintw(12,15,"      _         _      _)");
     mvprintw(13,15,"_ (    (      )) (      )");
@@ -17,7 +17,7 @@ void createBoard(int fields[4][5]){
     mvprintw(24,0,"Legenda:");
     mvprintw(25,0,"p - prawda \nq - falsz \nX - nieznane");
     printVLine(fields);
-    if(has_colors()){
+    if(has_colors()){					//print info about basic game rules
         start_color();
         init_pair( 1, COLOR_BLACK, COLOR_WHITE );
         init_pair( 2, COLOR_BLACK, COLOR_GREEN );
@@ -40,7 +40,7 @@ void createBoard(int fields[4][5]){
     move(11,18);
 }
 //----------------------------------------------------
-void getVLine(int which,int fields[4][5],char line[4]){
+void getVLine(int which,int fields[4][5],char line[4]){			//get vertical line, to print with colors
     for(int i=0;i<4;i++){
         switch (fields[i][which]){
     case 0:
@@ -56,7 +56,7 @@ void getVLine(int which,int fields[4][5],char line[4]){
     }
 }
 //--------------------------------------------------------------
-void printVLine(int fields[4][5]){
+void printVLine(int fields[4][5]){					//print lines vartically with colors
     char line[4];
     if( has_colors() ){
         start_color();

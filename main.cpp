@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
     int negation[3];
     if(argc<6){
         cout<<"Podaj pliki, ktore zawieraja definicje operatorow logicznych!"<<endl;
-        cout<<"Np: ./run_my_game --not not.txt --and and.txt --or or.txt --impl impl.txt\n";
+        cout<<"Np: ./run_my_game --not not.txt --and and.txt --or or.txt\n";
         system("PAUSE");
         exit(1);
     }
@@ -53,7 +53,7 @@ void readFilesAdded(int argc, char *argv[],int alternative[3][3],int conjuction[
         }
         else{
             cout<<"Podales zly argument, przykladowe wywolanie programu:"<<endl;
-            cout<<"./run_my_game --not not.txt --and and.txt --or or.txt";
+            cout<<"./game --not not.txt --and and.txt --or or.txt";
             exit(1);
         }
     }

@@ -9,6 +9,7 @@ void evaluate_line2_vertical(bool notsVertical[5],bool operandsVertical[3][5],in
 void evaluate_line3_vertical(bool notsVertical[5],bool operandsVertical[3][5],int fields[4][5],int lines_vertical[5],int alternative[3][3],int conjuction[3][3],int negation[3]);
 void evaluate_line4_vertical(bool notsVertical[5],bool operandsVertical[3][5],int fields[4][5],int lines_vertical[5],int alternative[3][3],int conjuction[3][3],int negation[3]);
 void evaluate_line5_vertical(bool notsVertical[5],bool operandsVertical[3][5],int fields[4][5],int lines_vertical[5],int alternative[3][3],int conjuction[3][3],int negation[3]);
+//every function of the above evaluates the values of logical sentences - after the game is finished
 void fireworks();
 void player_of_justice_wins();
 void player_of_lies_wins();
@@ -17,7 +18,7 @@ void player_of_lies_wins();
 void getscore(bool notsHorizontal[4],bool notsVertical[5],bool operandsHorizontal[4][4],bool operandsVertical[3][5],int fields[4][5],int alternative[3][3],int conjuction[3][3],int negation[3]){
        int lines_horizontal[4];
        int lines_vertical[5];
-       int player_of_truth=0;
+       int player_of_truth=0; // points for every player 
        int player_of_false=0;
        evaluate_line1_horizontal(notsHorizontal,operandsHorizontal,fields,lines_horizontal,alternative,conjuction,negation);
        evaluate_line2_horizontal(notsHorizontal,operandsHorizontal,fields,lines_horizontal,alternative,conjuction,negation);
@@ -29,17 +30,12 @@ void getscore(bool notsHorizontal[4],bool notsVertical[5],bool operandsHorizonta
        evaluate_line4_vertical(notsVertical,operandsVertical,fields,lines_vertical,alternative,conjuction,negation);
        evaluate_line5_vertical(notsVertical,operandsVertical,fields,lines_vertical,alternative,conjuction,negation);
        for(int i=0;i<4;i++){
-        if(lines_horizontal[i]==1) player_of_truth++;
-        else if(lines_horizontal[i]==0)player_of_false++;
+            if(lines_horizontal[i]==1) player_of_truth++;		//count player's points
+            else if(lines_horizontal[i]==0)player_of_false++;
        }
        for(int i=0;i<5;i++){
-        if(lines_vertical[i]==1) player_of_truth++;
-        else if(lines_vertical[i]==0) player_of_false++;
-        else {
-            clear();
-            mvprintw(getmaxy(stdscr)-1,(getmaxx(stdscr)/2)-5,"REMIS!!");
-            return;
-        }
+            if(lines_vertical[i]==1) player_of_truth++;
+            else if(lines_vertical[i]==0) player_of_false++;
        }
        for(int i=0;i<4;i++) mvprintw(11+(2*i),45,"%d",lines_horizontal[i]);
        for(int i=0;i<5;i++) mvprintw(20,18+(5*i),"%d",lines_vertical[i]);
@@ -47,7 +43,12 @@ void getscore(bool notsHorizontal[4],bool notsVertical[5],bool operandsHorizonta
        getch();
        clear();
        if(player_of_false<player_of_truth) player_of_justice_wins();
-       else player_of_lies_wins();
+       else if(player_of_false>player_of_truth) player_of_lies_wins();
+       else {
+            clear();
+            mvprintw(getmaxy(stdscr)-1,(getmaxx(stdscr)/2)-5,"REMIS!!");
+            return;
+       }
        getch();
        fireworks();
 }

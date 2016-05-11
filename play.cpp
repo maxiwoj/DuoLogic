@@ -15,16 +15,16 @@ void play(int alternative[3][3],int conjuction[3][3],int negation[3]){
     int cols,rows;
     getmaxyx(stdscr,rows,cols);
     int x,y;
-    bool operandsHorizontal[4][4];
+    bool operandsHorizontal[4][4];			//true - conjuction
     bool operandsVertical[3][5];
     bool notsHorizontal[4];
-    for(int i=0;i<4;i++) notsHorizontal[i]=false;
+    for(int i=0;i<4;i++) notsHorizontal[i]=false;	//true - reverses the logical value of the sentence (true - negation)
     bool notsVertical[5];
     for(int i=0;i<5;i++) notsVertical[i]=false;
     bool changed [8][26];
     for(int i=0;i<8;i++){
         for(int j=0;j<26;j++){
-            changed[i][j]=false;
+            changed[i][j]=false;			//on every field players can write only once - cant be changed the second time
         }
     }
     int fields[4][5];
@@ -39,7 +39,7 @@ void play(int alternative[3][3],int conjuction[3][3],int negation[3]){
     else mvprintw(6,9,"Teraz ruch gracza falszu:");
     getyx(stdscr,y,x);
     noecho();
-    while(moves_couter<13){
+    while(moves_couter<13){					//there are 13 significant moves, that can end the game
         user_action=getch();
         if(x<cols && y<rows){
                 switch(user_action){
@@ -99,8 +99,8 @@ void play(int alternative[3][3],int conjuction[3][3],int negation[3]){
 }
 
 //------------------------------------------------------------
-bool changableField(int x,int y,char z[2],bool changed[8][26]){
-    if(((x==15 and (y==11 | y==13 | y==15 | y==17)) or (y==10 and (x==18 | x==23 | x==28 | x==33 | x==38))) && !changed[y-10][x-15]){
+bool changableField(int x,int y,char z[2],bool changed[8][26]){	//only some fields are changable
+    if(((x==15 and (y==11 | y==13 | y==15 | y==17)) or (y==10 and (x==18 | x==23 | x==28 | x==33 | x==38))) && !changed[y-10][x-15]){ //places where player can put a "not"
         z[0]='n';
         z[1]=27;
         return true;
@@ -109,18 +109,18 @@ bool changableField(int x,int y,char z[2],bool changed[8][26]){
             (y==12 && (x==21 | x==31 | x==38)) |
             (y==14 && (x==18 | x==25 | x==36)) |
             (y==16 && (x==21 | x==31 | x==38)) |
-            (y==17 && (x==26 | x==36))) && !changed[y-10][x-15]){
-            z[0]='a';
+            (y==17 && (x==26 | x==36))) && !changed[y-10][x-15]){	//fields where players can put operands (cant be changed already!)	
+            z[0]='a';	
             z[1]='o';
             return true;
             }
     return false;
 }
 //----------------------------------------
-void getRandomValues(int fields[4][5]){
+void getRandomValues(int fields[4][5]){					//values of elements are random
     for(int i=0;i<4;i++){
         for(int j=0;j<5;j++){
-            int tmp=rand();
+	    int tmp=rand();
             if(tmp%13==0) tmp=2;
             else tmp=tmp%2;
             fields[i][j]=tmp;
@@ -188,5 +188,5 @@ void notice_negation_change(int x,int y,bool notsHorizontal[4],bool notsVertical
 }
 //---------------------------------------------------------------
 bool significantField(int x,int y){
-    return ((y==12 && (x==21 | x==31)) or (y==14 && (x==25 | x==36)) or (y==16 && (x==21 | x==31)));
+    return ((y==12 && (x==21 | x==31)) or (y==14 && (x==25 | x==36)) or (y==16 && (x==21 | x==31)));	//returns true if the field changes more than 1 operands
 }
