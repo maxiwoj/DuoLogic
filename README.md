@@ -3,16 +3,13 @@ This is the ReadMe file for the second task from the third homework made by Maks
 The instruction below is prepared for Unix platform:
 
 Copilation and usage:
-The game uses external library (curses) so if you have the library installed on your computer you can skip the first step.
+The game uses external library (curses), but all the files needed to compilation and run are in ./lib and ./include
 
-1. Instaliing the library: type "make config" in the directory you git cloned the game to download and install the library on your computer. You will be asked for the password of the root user (installing external libraries requires the administrator's permission).
+COMPILATION: to compile simply type "make" in the project directory.
 
-COMPILATION: to compile simply type "make"
+RUN: to compile and run type "make run". Before running for the best game expirience try to change the window size to the bigger, the best option is when all the instruction (chosen from the game menu) fits the window size.
 
-RUN: to compile and run type "make run"
-
-CLEAN: to clean execuable,backup and object files from the directory type make clean
-
+CLEAN: to clean execuable, backup and object files from the directory type "make clean"
 
 NOTE: Before every commit to the git remember to clean the directory with command "make clean"
 
@@ -23,5 +20,7 @@ The game instruction: In the game take part 2 players (player of truth and playe
 
 DESCRIPTION OF FILES IN THE PROJECT:
 In ./additional are files needed to run the game (definitions of the logical operators). 2-unknown 1-truth 0-false
-
-*.cpp - project files needed to compilation. Names of those files are also their desrciption.
+In ./include are headers to the ncurses library
+In ./lib are executables of the ncurses library that are nessesary to the compilation
+In ./src are all the *.cpp - project files needed to compilation. Names of those files are also their desrciption.
+The directory ./obj is created during compilation to keep all the *.o files that are essential in the project. The directory will be deleted as soon as you type "make clean" to erase all executable files.
