@@ -31,5 +31,6 @@ clean:
 	rm -fR obj	
 	
 run: game 
+	resize -s 30 120
 	./$(NAME) --or $(OR) --not $(NOT) --and $(AND)
 
